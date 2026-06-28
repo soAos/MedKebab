@@ -10,12 +10,13 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --coal:    #0d0c0a;
-    --ember:   #e2231a;
-    --saffron: #f4c80a;
-    --cream:   #fff8e1;
-    --smoke:   #181614;
-    --white:   #fffdf5;
+    --coal:    #fffaf0;
+    --ember:   #d81020;
+    --saffron: #e0a500;
+    --cream:   #2b2218;
+    --smoke:   #fff1d6;
+    --white:   #1a1410;
+    --ink-soft: rgba(43,34,24,0.7);
   }
 
   html { scroll-behavior: smooth; }
@@ -34,19 +35,19 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1rem 2.5rem;
-    background: rgba(26,18,8,0.92);
+    background: rgba(255,250,240,0.92);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(226,35,26,0.25);
+    border-bottom: 1px solid rgba(216,16,32,0.18);
   }
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.4rem;
     letter-spacing: .04em;
-    color: var(--saffron);
+    color: var(--ember);
     text-decoration: none;
     white-space: nowrap;
   }
-  .nav-logo span { color: var(--ember); }
+  .nav-logo span { color: var(--white); }
   nav ul {
     list-style: none; display: flex; gap: 2rem;
   }
@@ -95,7 +96,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(4.5rem, 14vw, 10rem);
     line-height: .95; letter-spacing: .04em;
-    color: var(--white);
+    color: #fffdf5;
     text-shadow: 0 0 60px rgba(226,35,26,0.4);
   }
   .hero-title em {
@@ -110,7 +111,7 @@
   }
   .hero-sub {
     margin: 1.5rem auto 0;
-    font-size: 1.15rem; color: rgba(253,243,227,0.75);
+    font-size: 1.15rem; color: rgba(255,253,245,0.85);
     max-width: 480px;
   }
   .hero-rating {
@@ -130,7 +131,7 @@
   }
   .btn-primary {
     background: var(--ember);
-    color: var(--white); border: none; cursor: pointer;
+    color: #fffdf5; border: none; cursor: pointer;
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700; font-size: 1rem; letter-spacing: .15em;
     text-transform: uppercase; text-decoration: none;
@@ -140,7 +141,7 @@
   .btn-primary:hover { background: #e04d12; transform: translateY(-2px); }
   .btn-outline {
     background: transparent;
-    color: var(--cream); border: 1.5px solid rgba(253,243,227,0.35);
+    color: #fffdf5; border: 1.5px solid rgba(255,253,245,0.4);
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 700; font-size: 1rem; letter-spacing: .15em;
     text-transform: uppercase; text-decoration: none;
@@ -149,23 +150,35 @@
   }
   .btn-outline:hover { border-color: var(--saffron); color: var(--saffron); transform: translateY(-2px); }
 
-  /* ── STRIP ── */
-  .strip {
-    background: var(--ember);
-    padding: .65rem 0;
-    overflow: hidden; white-space: nowrap;
+  /* ── FEATURE BAR ── */
+  .feature-bar {
+    background: var(--smoke);
+    border-top: 1px solid rgba(226,35,26,0.12);
+    border-bottom: 1px solid rgba(226,35,26,0.12);
+    padding: 1.3rem 1.5rem;
   }
-  .strip-inner {
-    display: inline-block;
-    animation: ticker 22s linear infinite;
+  .feature-bar-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: .9rem;
+  }
+  .feature-pill {
+    display: inline-flex; align-items: center; gap: .55rem;
+    background: var(--coal);
+    border: 1px solid rgba(226,35,26,0.2);
+    border-radius: 2rem;
+    padding: .55rem 1.2rem;
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: .9rem; font-weight: 700; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--white);
+    font-weight: 700; font-size: .85rem; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--cream);
+    transition: border-color .2s, transform .15s;
   }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+  .feature-pill:hover { border-color: var(--ember); transform: translateY(-2px); }
+  .feature-pill .dot {
+    width: .45rem; height: .45rem; border-radius: 50%;
+    background: var(--ember); flex-shrink: 0;
   }
+  .feature-pill.accent .dot { background: var(--saffron); }
 
   /* ── SECTIONS ── */
   section { padding: 5rem 2rem; }
@@ -201,7 +214,7 @@
     position: relative; overflow: hidden;
     display: flex; flex-direction: column;
   }
-  .menu-card:hover { background: #1d1210; border-color: rgba(226,35,26,0.5); }
+  .menu-card:hover { background: #fff4dc; border-color: rgba(226,35,26,0.5); }
   .menu-card::before {
     content: attr(data-emoji);
     position: absolute; right: 1.2rem; top: 1rem;
@@ -213,7 +226,7 @@
     font-size: 1.7rem; letter-spacing: .05em;
     color: var(--saffron); margin-bottom: .5rem;
   }
-  .menu-card p { font-size: .93rem; color: rgba(253,243,227,0.7); line-height: 1.5; }
+  .menu-card p { font-size: .93rem; color: rgba(43,34,24,0.7); line-height: 1.5; }
   .menu-tag {
     display: inline-block; margin-top: .9rem;
     background: rgba(226,35,26,0.18);
@@ -235,8 +248,8 @@
     cursor: pointer; align-self: flex-start;
     transition: background .2s, color .2s, transform .15s;
   }
-  .menu-add-btn:hover { background: var(--ember); border-color: var(--ember); color: var(--white); }
-  .menu-add-btn.added { background: var(--ember); border-color: var(--ember); color: var(--white); }
+  .menu-add-btn:hover { background: var(--ember); border-color: var(--ember); color: #fffdf5; }
+  .menu-add-btn.added { background: var(--ember); border-color: var(--ember); color: #fffdf5; }
 
   /* ── ABOUT ── */
   #about { background: var(--coal); }
@@ -261,13 +274,13 @@
   .stat-box .lbl {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: .85rem; letter-spacing: .12em;
-    text-transform: uppercase; color: rgba(253,243,227,0.55);
+    text-transform: uppercase; color: rgba(43,34,24,0.55);
   }
   .about-visual {
     position: relative;
   }
   .about-visual-box {
-    background: linear-gradient(135deg, var(--smoke), #0d0904);
+    background: linear-gradient(135deg, var(--smoke), #fffaf0);
     border: 1.5px solid rgba(226,35,26,0.3);
     border-radius: 4px;
     padding: 3rem 2.5rem;
@@ -281,7 +294,7 @@
   }
   .about-visual-box p {
     font-style: italic; font-size: 1.1rem;
-    color: rgba(253,243,227,0.7);
+    color: rgba(43,34,24,0.7);
     border-top: 1px solid rgba(226,35,26,0.2);
     padding-top: 1.2rem; margin-top: .5rem;
   }
@@ -308,7 +321,7 @@
   .review-card:hover { transform: translateY(-4px); }
   .review-stars { color: var(--saffron); font-size: 1.1rem; margin-bottom: .8rem; }
   .review-card blockquote {
-    font-size: .97rem; color: rgba(253,243,227,0.8);
+    font-size: .97rem; color: rgba(43,34,24,0.8);
     line-height: 1.6; font-style: italic;
   }
   .review-author {
@@ -330,7 +343,7 @@
     margin-bottom: 1rem; letter-spacing: .05em;
   }
   .info-block p, .info-block li {
-    font-size: .97rem; color: rgba(253,243,227,0.75); line-height: 1.8;
+    font-size: .97rem; color: rgba(43,34,24,0.75); line-height: 1.8;
   }
   .info-block ul { list-style: none; }
   .info-block ul li { display: flex; justify-content: space-between; }
@@ -339,7 +352,7 @@
     font-weight: 500; letter-spacing: .05em;
     color: var(--cream);
   }
-  .closed { color: rgba(253,243,227,0.4) !important; }
+  .closed { color: rgba(43,34,24,0.4) !important; }
   .info-divider {
     height: 1px; background: rgba(226,35,26,0.2); margin: 1rem 0;
   }
@@ -383,7 +396,7 @@
   .footer-logo span { color: var(--ember); }
   footer p {
     margin-top: .6rem; font-size: .85rem;
-    color: rgba(253,243,227,0.4);
+    color: rgba(43,34,24,0.4);
   }
 
   /* ── RESPONSIVE ── */
@@ -394,7 +407,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .strip-inner { animation: none; }
+    .feature-pill:hover { transform: none; }
     * { transition: none !important; }
   }
 
@@ -434,7 +447,7 @@
   .modal-close {
     position: absolute; top: 1.2rem; right: 1.2rem;
     background: none; border: none;
-    color: rgba(253,243,227,0.6);
+    color: rgba(43,34,24,0.6);
     font-size: 1.6rem; line-height: 1; cursor: pointer;
     transition: color .2s;
   }
@@ -445,7 +458,7 @@
     color: var(--white); margin-bottom: .3rem;
   }
   .modal-sub {
-    font-size: .92rem; color: rgba(253,243,227,0.55);
+    font-size: .92rem; color: rgba(43,34,24,0.55);
     margin-bottom: 1.6rem;
   }
   .order-item {
@@ -461,7 +474,7 @@
     color: var(--saffron);
   }
   .order-item-desc {
-    font-size: .82rem; color: rgba(253,243,227,0.5);
+    font-size: .82rem; color: rgba(43,34,24,0.5);
     margin-top: .15rem;
   }
   .qty-control {
@@ -494,7 +507,7 @@
     padding: .8rem 1rem;
     resize: vertical; min-height: 4.5rem;
   }
-  .order-note::placeholder { color: rgba(253,243,227,0.35); }
+  .order-note::placeholder { color: rgba(43,34,24,0.35); }
   .order-summary {
     margin-top: 1.6rem;
     padding-top: 1.2rem;
@@ -504,7 +517,7 @@
   .order-summary .lbl {
     font-family: 'Barlow Condensed', sans-serif;
     letter-spacing: .12em; text-transform: uppercase;
-    font-size: .85rem; color: rgba(253,243,227,0.6);
+    font-size: .85rem; color: rgba(43,34,24,0.6);
   }
   .order-summary .count {
     font-family: 'Bebas Neue', sans-serif;
@@ -526,7 +539,7 @@
   }
   .empty-hint {
     text-align: center; padding: 1.5rem 0;
-    color: rgba(253,243,227,0.4); font-size: .9rem;
+    color: rgba(43,34,24,0.4); font-size: .9rem;
     display: none;
   }
   .empty-hint.show { display: block; }
@@ -564,10 +577,15 @@
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="strip">
-  <div class="strip-inner">
-    🍕 Pizza classica &nbsp;·&nbsp; 🌯 Kebab di carne &nbsp;·&nbsp; 🍹 Cocktail Margarita &nbsp;·&nbsp; ⭐ 4.5 su Google &nbsp;·&nbsp; 📍 Cuneo, Corso Nizza 71 &nbsp;·&nbsp; 🕐 Aperto tutti i giorni &nbsp;·&nbsp; 🍕 Pizza classica &nbsp;·&nbsp; 🌯 Kebab di carne &nbsp;·&nbsp; 🍹 Cocktail Margarita &nbsp;·&nbsp; ⭐ 4.5 su Google &nbsp;·&nbsp; 📍 Cuneo, Corso Nizza 71 &nbsp;·&nbsp; 🕐 Aperto tutti i giorni &nbsp;·&nbsp;
+<!-- FEATURE BAR -->
+<div class="feature-bar">
+  <div class="feature-bar-inner">
+    <span class="feature-pill"><span class="dot"></span>Pizza classica</span>
+    <span class="feature-pill accent"><span class="dot"></span>Kebab di carne</span>
+    <span class="feature-pill"><span class="dot"></span>Cocktail Margarita</span>
+    <span class="feature-pill accent"><span class="dot"></span>4.5 ★ su Google</span>
+    <span class="feature-pill"><span class="dot"></span>Corso Nizza 71, Cuneo</span>
+    <span class="feature-pill accent"><span class="dot"></span>Aperto tutti i giorni</span>
   </div>
 </div>
 
@@ -576,7 +594,7 @@
   <div class="container">
     <p class="section-label">Cosa mangiamo</p>
     <h2>IL MENU</h2>
-    <p style="color:rgba(253,243,227,.65); max-width:520px;">Pizza, kebab e specialità mediterranee, preparate ogni giorno con ingredienti freschi. Qualità e convenienza nel cuore di Cuneo.</p>
+    <p style="color:rgba(43,34,24,.65); max-width:520px;">Pizza, kebab e specialità mediterranee, preparate ogni giorno con ingredienti freschi. Qualità e convenienza nel cuore di Cuneo.</p>
     <div class="menu-grid">
       <div class="menu-card" data-emoji="🌯">
         <h3>Kebab Classico</h3>
@@ -628,10 +646,10 @@
       <div>
         <p class="section-label">Chi siamo</p>
         <h2>SAPORI CHE UNISCONO</h2>
-        <p style="color:rgba(253,243,227,.7); margin-bottom:1rem;">
+        <p style="color:rgba(43,34,24,.7); margin-bottom:1rem;">
           MED nasce dall'incontro tra la tradizione mediorientale del kebab e la classica pizza italiana. Nel cuore di Cuneo, in Corso Nizza, serviamo ogni giorno piatti preparati con cura: ingredienti freschi, ricette genuine, ambiente pulito e accogliente.
         </p>
-        <p style="color:rgba(253,243,227,.7);">
+        <p style="color:rgba(43,34,24,.7);">
           Padroni cordiali, personale gentile e un menù pensato per tutti — dagli studenti alle famiglie, fino agli amanti dei buoni cocktail.
         </p>
         <div class="about-stats">
@@ -728,18 +746,18 @@
           <p style="margin-bottom:.8rem;">
             <a href="tel:+393271770382" class="contact-link">📞 +39 327 177 0382</a>
           </p>
-          <p style="color:rgba(253,243,227,.7);">📍 Corso Nizza, 71<br>12100 Cuneo (CN)</p>
-          <p style="margin-top:.8rem; color:rgba(253,243,227,.55); font-size:.9rem;">🚉 A pochi passi dalla stazione di Cuneo</p>
+          <p style="color:rgba(43,34,24,.7);">📍 Corso Nizza, 71<br>12100 Cuneo (CN)</p>
+          <p style="margin-top:.8rem; color:rgba(43,34,24,.55); font-size:.9rem;">🚉 A pochi passi dalla stazione di Cuneo</p>
         </div>
       </div>
       <div>
         <div class="info-block">
           <h3>Come raggiungerci</h3>
-          <p style="margin-bottom:1rem; color:rgba(253,243,227,.65);">Siamo in Corso Nizza, nel centro di Cuneo, vicino al Museo Generale Bonaparte.</p>
+          <p style="margin-bottom:1rem; color:rgba(43,34,24,.65);">Siamo in Corso Nizza, nel centro di Cuneo, vicino al Museo Generale Bonaparte.</p>
         </div>
         <div class="map-placeholder">
           <span class="map-icon">📍</span>
-          <p style="color:rgba(253,243,227,.7); font-size:.95rem;">Corso Nizza, 71<br>Cuneo, Piemonte</p>
+          <p style="color:rgba(43,34,24,.7); font-size:.95rem;">Corso Nizza, 71<br>Cuneo, Piemonte</p>
           <a href="https://maps.google.com/?q=MED+Casa+del+Kebab+Pizza+Cuneo+Corso+Nizza+71" target="_blank" rel="noopener">Apri su Google Maps →</a>
         </div>
         <div style="margin-top:2rem;">
